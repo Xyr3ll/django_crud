@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% if item %}Edit Item{% else %}Add Item{% endif %}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 50%;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        font-weight: bold;
+        color: #555;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      input[type='submit'] {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      input[type='submit']:hover {
+        background-color: #45a049;
+      }
+      .form-group textarea {
+        height: 100px;
+        resize: vertical;
+      }
+      .back-btn {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      .back-btn a {
+        text-decoration: none;
+        color: #333;
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .logout-btn {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      .logout-btn a {
+        text-decoration: none;
+        color: white;
+        background-color: #f44336;
+        padding: 8px 15px;
+        border-radius: 5px;
+      }
+      .logout-btn a:hover {
+        background-color: #d32f2f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>{% if item %}Edit Item{% else %}Add New Item{% endif %}</h2>
+
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Item Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value="{{ form.name.value|default:'' }}"
+            required
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" required>
+            {{ form.description.value|default:'' }}
+          </textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            value="{{ form.price.value|default:'' }}"
+            required
+          />
+        </div>
+        
+      
+        <input type="submit" value="{% if item %}Update Item{% else %}Add Item{% endif %}" />
+      </form>
+      
+
+      <div class="back-btn">
+        <a href="{% url 'item_list' %}">Back to Item List</a>
+      </div>
+    </div>
+  </body>
+</html>
