@@ -1,10 +1,10 @@
 # **Django CRUD Application**
 
 ## **Student Details**
-- **Name**: [Your Name]
-- **Email**: [Your Email Address]
-- **University/Institution**: [Your University/Institution Name]
-- **Course**: [Your Course/Program Name]
+- **Name**: Jericho Eryl N. Cocal
+- **USN**: 22015012110
+- **Year and Course**: 3rd yr BS-Cybersecurity
+- **Course Code**: ITE6200
 
 ---
 
