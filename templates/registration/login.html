@@ -1,109 +1,115 @@
 <!-- templates/registration/login.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+  </head>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7 url("{% static 'images/BG.png' %}") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-logo {
+      left: 1240px;
+      position: absolute;
+      max-width: 600px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .login-container {
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.795);
+      padding: 60px 60px;
+      border-radius: 60px;
+      box-shadow: 0 0 0 6px rgba(0, 67, 212, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
 
-    <!-- Styles -->
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    h2 {
+      text-align: center;
+      margin-bottom: 7s0px;
+      font-size: 64px;
+      color: rgb(20, 112, 192);
+    }
 
-        .login-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
+    /* Form styles */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
+    label {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
 
-        /* Form styles */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
+    input {
+      margin-top: 30px;
+      padding: 10px;
+      margin-bottom: 50px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-        label {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
+    input[type='submit'] {
+      background-color: rgb(20, 112, 192);
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      padding: 12px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
 
-        input {
-            padding: 10px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    input[type='submit']:hover {
+      background-color: rgba(20, 112, 192, 0.63);
+      color: #fff;
+      transform: scale(1.05);
+    }
 
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            border: none;
-            font-size: 16px;
-            padding: 12px;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
+    /* Optional: Advanced text styling */
+    input[type='submit']:hover::after {
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  </style>
+  <body>
+    <img src="{% static 'images/rb_1123.png' %}" alt="Login Logo" class="login-logo" />
     <div class="login-container">
-        <h2>Login</h2>
-        
-        <form method="post">
-            {% csrf_token %}
-            
-            <div>
-                <label for="id_username">Username</label>
-                {{ form.username }}
-            </div>
-            
-            <div>
-                <label for="id_password">Password</label>
-                {{ form.password }}
-            </div>
-            
-            <input type="submit" value="Login">
-        </form>
-    </div>
+      <h2>Login</h2>
 
-</body>
+      <form method="post">
+        {% csrf_token %}
+
+        <div>
+          <label for="id_username">Username</label>
+          {{ form.username }}
+        </div>
+
+        <div>
+          <label for="id_password">Password</label>
+          {{ form.password }}
+        </div>
+
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+  </body>
 </html>

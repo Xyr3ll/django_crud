@@ -1,95 +1,108 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="item_form.css" />
     <title>{% if item %}Edit Item{% else %}Add Item{% endif %}</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        width: 50%;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-      }
-      h2 {
-        text-align: center;
-        color: #333;
-      }
-      .form-group {
-        margin-bottom: 15px;
-      }
-      label {
-        font-weight: bold;
-        color: #555;
-      }
-      input,
-      textarea {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-      }
-      input[type='submit'] {
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      input[type='submit']:hover {
-        background-color: #45a049;
-      }
-      .form-group textarea {
-        height: 100px;
-        resize: vertical;
-      }
-      .back-btn {
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-        font-size: 16px;
-      }
-      .back-btn a {
-        text-decoration: none;
-        color: #333;
-        padding: 8px 15px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-      }
-      .logout-btn {
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-        font-size: 16px;
-      }
-      .logout-btn a {
-        text-decoration: none;
-        color: white;
-        background-color: #f44336;
-        padding: 8px 15px;
-        border-radius: 5px;
-      }
-      .logout-btn a:hover {
-        background-color: #d32f2f;
-      }
-    </style>
   </head>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7 url("{% static 'images/BG.png' %}") no-repeat center
+        center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 30%;
+      margin: 50px auto;
+      padding: 90px;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.795);
+      border-radius: 60px;
+      box-shadow: 0 0 0 6px rgba(0, 67, 212, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    input[type='submit'] {
+      width: 400px;
+      background-color: rgb(20, 112, 192);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s;
+    }
+
+    input[type='submit']:hover {
+      background-color: rgb(86, 151, 209);
+      transform: scale(1.01);
+    }
+
+    .form-group textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: block;
+      text-align: right;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .back-btn a {
+      text-decoration: none;
+      color: #333;
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s ease;
+    }
+
+    .back-btn a:hover {
+      background-color: rgb(86, 151, 209);
+    }
+  </style>
   <body>
     <div class="container">
       <h2>{% if item %}Edit Item{% else %}Add New Item{% endif %}</h2>
 
       <form method="POST">
         {% csrf_token %}
+
         <div class="form-group">
           <label for="name">Item Name</label>
+          <br />
           <input
             type="text"
             id="name"
@@ -98,16 +111,18 @@
             required
           />
         </div>
-        
+
         <div class="form-group">
           <label for="description">Description</label>
+          <br />
           <textarea id="description" name="description" required>
             {{ form.description.value|default:'' }}
           </textarea>
         </div>
-        
+
         <div class="form-group">
           <label for="price">Price</label>
+          <br />
           <input
             type="number"
             id="price"
@@ -116,11 +131,12 @@
             required
           />
         </div>
-        
-      
-        <input type="submit" value="{% if item %}Update Item{% else %}Add Item{% endif %}" />
+
+        <input
+          type="submit"
+          value="{% if item %}Update Item{% else %}Add Item{% endif %}"
+        />
       </form>
-      
 
       <div class="back-btn">
         <a href="{% url 'item_list' %}">Back to Item List</a>

@@ -5,58 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Item List</title>
     <style>
+      /* General Styles */
       body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
+        background: #f7f7f7 url('BG (3).png') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
         margin: 0;
-        padding: 0;
       }
       .container {
-        width: 80%;
+        width: 60%;
         margin: 50px auto;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.897);
+        padding: 60px 60px;
+        border-radius: 60px;
+        box-shadow: 0 0 0 6px rgba(0, 67, 212, 0.1);
       }
+
       h2 {
+        font-size: 50px;
         text-align: center;
         color: #333;
       }
+
       table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
       }
+
       th,
       td {
         padding: 12px;
         text-align: left;
         border-bottom: 1px solid #ddd;
       }
+
       th {
         background-color: #f1f1f1;
       }
+
+      /* Button Styles */
       a {
         text-decoration: none;
         padding: 8px 15px;
         border-radius: 5px;
         color: white;
         margin: 5px;
+        transition: background-color 0.3s, opacity 0.3s;
       }
+
+      /* Create Button */
       .btn-create {
-        background-color: #4caf50;
+        background-color: rgb(20, 112, 192);
       }
+
+      .btn-create:hover {
+        background-color: rgb(110, 156, 196);
+      }
+
+      /* Edit Button */
       .btn-edit {
-        background-color: #ffa500;
+        background-color: rgb(20, 112, 192);
       }
+
+      .btn-edit:hover {
+        background-color: rgb(17, 91, 155);
+      }
+
+      /* Delete Button */
       .btn-delete {
         background-color: #f44336;
       }
-      .btn-create:hover,
-      .btn-edit:hover,
+
       .btn-delete:hover {
-        opacity: 0.8;
+        background-color: #d32f2f;
       }
     </style>
   </head>

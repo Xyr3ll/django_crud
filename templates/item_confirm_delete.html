@@ -1,68 +1,96 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Confirm Delete</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 40%;
-            margin: 100px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        p {
-            text-align: center;
-            color: #555;
-        }
-        .btn-confirm, .btn-cancel {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-        .btn-confirm {
-            background-color: #F44336;
-            color: white;
-        }
-        .btn-cancel {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .btn-confirm:hover, .btn-cancel:hover {
-            opacity: 0.8;
-        }
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7 url("{% static 'images/BGG.png' %}") no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        margin: 100px auto;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.795);
+        padding: 60px 60px;
+        border-radius: 60px;
+        box-shadow: 0 0 0 6px rgba(0, 67, 212, 0.1);
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+
+      p {
+        text-align: center;
+        color: #555;
+      }
+
+      /* Button Styles */
+      .btn-confirm,
+      .btn-cancel {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      .btn-confirm {
+        margin-left: 50px;
+        background-color: #f44336;
+        color: white;
+      }
+
+      .btn-cancel {
+        width: 299px;
+        background-color: rgb(20, 112, 192);
+        color: white;
+      }
+
+      .btn-confirm:hover,
+      .btn-cancel:hover {
+        opacity: 0.8;
+      }
+
+      /* Flexbox for buttons */
+      .container .btn-group {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <h2>Are you sure you want to delete this item?</h2>
-        <p>Once deleted, the item cannot be recovered.</p>
-        
-        <form method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn-confirm">Yes, Delete</button>
-        </form>
+      <h2>Are you sure you want to delete this item?</h2>
+      <p>Once deleted, the item cannot be recovered.</p>
 
-        <a href="{% url 'item_list' %}">
-            <button class="btn-cancel">Cancel</button>
-        </a>
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn-confirm">Yes, Delete</button>
+      </form>
+
+      <a href="{% url 'item_list' %}">
+        <button class="btn-cancel">Cancel</button>
+      </a>
     </div>
-
-</body>
+  </body>
 </html>
