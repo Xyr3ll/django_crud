@@ -17,7 +17,7 @@ This is a simple Django-based web application for managing items. The applicatio
 
 The system uses the following technologies:
 - **Backend**: Django Framework (Python)
-- **Frontend**: HTML, CSS (Bootstrap can be added for styling)
+- **Frontend**: HTML, CSS
 - **Database**: SQLite (default for Django)
 
 The system ensures a clean and responsive interface with features like form validation and confirmation prompts for deletion.
